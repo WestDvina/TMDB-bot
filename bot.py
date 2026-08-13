@@ -152,7 +152,14 @@ async def safe_delete(message: Message):
 @router.message(CommandStart(), AllowedFilter())
 async def start(message: Message, state: FSMContext):
     await state.clear()
-    await message.answer("🔍 Что ищем? Выбери категорию:", reply_markup=menu_kb())
+    await message.answer(
+        "🎬 <b>TMDB Bot</b>\n\n"
+        "Ищу фильмы, сериалы, актёров и режиссёров через базу TMDB.\n\n"
+        "Выбери категорию — введи название — получи карточку. "
+        "На карточке кнопки: поиск на RuTube и YouTube, трейлер, "
+        "актёры, режиссёр и похожие тайтлы.",
+        reply_markup=menu_kb(),
+    )
 
 
 @router.message(Command("cancel"), AllowedFilter())
