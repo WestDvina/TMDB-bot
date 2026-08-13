@@ -1,0 +1,5 @@
+.venv/
+__pycache__/
+*.pyc
+.tmdb-bot.env
+.DS_Store

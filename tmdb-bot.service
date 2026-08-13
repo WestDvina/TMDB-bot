@@ -1,0 +1,16 @@
+[Unit]
+Description=TMDB Telegram bot
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/tmdb-bot
+EnvironmentFile=/opt/tmdb-bot/.tmdb-bot.env
+ExecStart=/opt/tmdb-bot/.venv/bin/python bot.py
+Restart=always
+RestartSec=5
+LimitNOFILE=1024
+
+[Install]
+WantedBy=multi-user.target
