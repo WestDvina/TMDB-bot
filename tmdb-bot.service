@@ -7,10 +7,27 @@ Wants=network-online.target
 Type=simple
 WorkingDirectory=/opt/tmdb-bot
 EnvironmentFile=/opt/tmdb-bot/.tmdb-bot.env
+Environment=PYTHONDONTWRITEBYTECODE=1
 ExecStart=/opt/tmdb-bot/.venv/bin/python bot.py
 Restart=always
 RestartSec=5
 LimitNOFILE=1024
+User=tmdbbot
+Group=tmdbbot
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictAddressFamilies=AF_INET AF_INET6
+CapabilityBoundingSet=
+AmbientCapabilities=
+UMask=0077
+RestrictRealtime=true
+LockPersonality=true
 
 [Install]
 WantedBy=multi-user.target
